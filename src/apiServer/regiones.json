@@ -1,0 +1,116 @@
+{
+    "titulo": "/regiones",
+    "descripcion": "Informacion del modulo Regiones",
+    "api": [
+        {
+            "metodoHTTP": "GET",
+            "endpoints": [
+                {
+                    "url": "/api/regiones/",
+                    "descripcion": "Devuelve todas las regiones guardadas",
+                    "tipoContenidoRespuesta": "application/json",
+                    "claseRespuesta": {
+                        "contenidoRespuesta": "Array[region]",
+                        "descripcion": "Array de objetos region",
+                        "atributosContenido": [
+                            {
+                                "key": "rgn_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la region"
+                            },
+                            {
+                                "key": "rgn_descripcion",
+                                "tipo": "string",
+                                "descripcion": "nombre de la region"
+                            },
+                            {
+                                "key": "pis_codigo",
+                                "tipo": "integer",
+                                "descripcion": "?"
+                            },
+                            {
+                                "key": "rgn_mnemonico",
+                                "tipo": "string",
+                                "descripcion": "?"
+                            }
+                        ]
+                    },
+                    "parametros": {},
+                    "cliente": null
+                }, 
+                {
+                    "url": "/api/regiones/provinciasPorRegion",
+                    "descripcion": "Devuelve todas las provincias de una Region",
+                    "tipoContenidoRespuesta": "application/json",
+                    "claseRespuesta": {
+                        "contenidoRespuesta": "Array[provincia]",
+                        "descripcion": "Array de objetos provincia",
+                        "atributosContenido": [
+                            {
+                                "key": "rgn_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la region"
+                            },
+                            {
+                                "key": "rgn_descripcion",
+                                "tipo": "string",
+                                "descripcion": "nombre de la region"
+                            },
+                            {
+                                "key": "pis_codigo",
+                                "tipo": "integer",
+                                "descripcion": "?"
+                            },
+                            {
+                                "key": "rgn_mnemonico",
+                                "tipo": "string",
+                                "descripcion": "?"
+                            }
+                        ]
+                    },
+                    "cliente": {
+                        "inputs": null
+                    }
+                }
+            ]
+        }, 
+        {
+            "metodoHTTP": "POST",
+            "endpoints": [
+                {
+                    "url": "/api/regiones/",
+                    "descripcion": "Devuelve todas las regiones guardadas",
+                    "tipoContenidoRespuesta": "application/json",
+                    "claseRespuesta": {
+                        "contenidoRespuesta": "Array[region]",
+                        "descripcion": "Array de objetos region",
+                        "atributosContenido": [
+                            {
+                                "key": "rgn_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la region"
+                            },
+                            {
+                                "key": "rgn_descripcion",
+                                "tipo": "string",
+                                "descripcion": "nombre de la region"
+                            },
+                            {
+                                "key": "pis_codigo",
+                                "tipo": "integer",
+                                "descripcion": "?"
+                            },
+                            {
+                                "key": "rgn_mnemonico",
+                                "tipo": "string",
+                                "descripcion": "?"
+                            }
+                        ]
+                    },
+                    "parametros": {},
+                    "cliente": null
+                }
+            ]
+        }
+    ]
+}

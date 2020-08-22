@@ -1,0 +1,29 @@
+{
+    "titulo": "/user",
+    "descripcion": "Informacion del modulo de Usuario",
+    "api": {
+        "metodo": "GET",
+        "endpoints": [
+            {
+                "url": "http://localhost:4000/user/",
+                "ContentTypeRespuesta": "application/json",
+                "contenidoRespuesta": "Array de Objetos",
+                "atributosModelo": {
+                    "nombre": {
+                        "tipo": "string",
+                        "descripcion": "Nombre de la region"
+                    }
+                },
+                "esquemaDeObjetos": {
+                    "nombre": "string"
+                },
+                "cliente": {
+                    "inputs": null
+                }
+            }
+        ],
+        "POST": [],
+        "PUT": [],
+        "DELETE": []
+    }
+}

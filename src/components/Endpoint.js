@@ -1,0 +1,66 @@
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import './styles/Endpoint.css'
+
+import ModeloRespuesta from './ModeloRespuesta'
+import EsquemaRespuesta from './EsquemaRespuesta';
+
+function Endpoint({ endpoint }) {
+
+    const [endpointSeleccionado, setEndpointSeleccionado] = useState(false)
+    const [modeloSeleccionado, setModeloSeleccionado] = useState(true)
+    const [esquemaSeleccionado, setEsquemaSeleccionado] = useState(false)
+
+    const clickEnEndpoint = () => setEndpointSeleccionado(!endpointSeleccionado)
+    const cambiaSelect = (e) => {
+        
+        if(e.target.value === 'modeloSeleccionado') {
+            setEsquemaSeleccionado(false)
+            setModeloSeleccionado(true)
+        }
+        
+        if(e.target.value === 'esquemaSeleccionado') {
+            setEsquemaSeleccionado(true)
+            setModeloSeleccionado(false)
+        }
+    }
+
+    return (
+
+        <div>
+            <div className="pt-2 pb-2" onClick={clickEnEndpoint}>
+                <h2>{endpoint.url}</h2>
+                <h4>{endpoint.descripcion}</h4>
+            </div>
+
+            <div style={endpointSeleccionado ? { display: 'block' } : { display: 'none' }}>
+
+                <div className="form-group">
+                    <label htmlFor="exampleFormControlSelect1">Example select</label>
+                    <select className="form-control" id="exampleFormControlSelect1" onChange={cambiaSelect}>
+                        <option value='modeloSeleccionado'>Modelo</option>
+                        <option value='esquemaSeleccionado'>Esquema</option>
+                    </select>
+                </div>
+
+                <div style={modeloSeleccionado ? {display: 'block'} : {display: 'none'}}>
+                    <ModeloRespuesta key={endpoint.claseRespuesta.descripcion}
+                        contenidoRespuesta = {endpoint.claseRespuesta.contenidoRespuesta}
+                        descripcion = {endpoint.claseRespuesta.descripcion}
+                        atributosContenido = {endpoint.claseRespuesta.atributosContenido}
+                        tipoContenidoRespuesta = {endpoint.tipoContenidoRespuesta}
+                    />
+                </div>
+
+                <div style={esquemaSeleccionado ? {display: 'block'} : {display: 'none'}}>
+                    <EsquemaRespuesta key={endpoint.claseRespuesta.descripcion}
+                        atributosContenido={endpoint.claseRespuesta.atributosContenido}
+                    />
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default Endpoint;
