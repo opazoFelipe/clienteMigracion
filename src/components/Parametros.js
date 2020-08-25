@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import './styles/Parametros.css'
 
-import Cliente from './Cliente'
+import ClienteGet from './ClienteGet'
 
-function Parametros({parametrosEndpoint}) {
+function Parametros({parametrosEndpoint, urlEndpoint, metodoHTTP}) {
 
     const crearParametros = () => {
 
@@ -18,15 +18,18 @@ function Parametros({parametrosEndpoint}) {
     const [parametros, setParametros] = useState(crearParametros())
     const [llamadaEndpoint, setLlamadaEndpoint] = useState(false)
     
-    let onInputChange = function(e) {
+    const onInputChange = function(e) {
+        
+        e.persist()
 
         setParametros(() => {
 
-            let tempParametros = parametros
+                let tempParametros = parametros
 
-            tempParametros[e.target.name] = e.target.value
-    
-            return tempParametros
+                tempParametros[e.target.name] = e.target.value
+        
+                return tempParametros
+            
         })
   
     }
@@ -85,10 +88,15 @@ function Parametros({parametrosEndpoint}) {
             
             {
                 llamadaEndpoint ? ( 
-                    <div>
-                        <Cliente url={'http://localhost:4000/api/regiones'} />
+                    <div className="mb-5">
+                        {
+                            metodoHTTP === 'GET' ? (
+                            <ClienteGet url={urlEndpoint} parametros={parametros} />
+                            ) : (<></>)
+                        }
+                        
                     </div>
-                ) : (<div></div>)
+                ) : (<div className="mb-5"></div>)
             }
            
         </div>

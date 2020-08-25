@@ -33,7 +33,7 @@ function Modulo({modulo}) {
 
   return (
  
-    <div className="container">
+    <div className="container" style={{marginBottom: '100px'}}>
       <h1 className="p-4">API servicios web UBB</h1>
 
       <div className={seleccionado ? 'moduloSeleccionado' : ''} onClick={clickEnModulo}>
@@ -45,7 +45,7 @@ function Modulo({modulo}) {
       </div>
       <div style={seleccionado ? { display: 'block' } : { display: 'none' }} className="pl-4">
         {
-          apiGET.map((endpoint) => <Endpoint endpoint={endpoint} key={endpoint.descripcion}/>)
+          apiGET.map((endpoint) => <Endpoint endpoint={endpoint} key={endpoint.descripcion} metodoHTTP={'GET'}/>)
         }
       </div>
     </div>

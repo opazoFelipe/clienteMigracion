@@ -5,7 +5,7 @@ import ModeloRespuesta from './ModeloRespuesta'
 import EsquemaRespuesta from './EsquemaRespuesta'
 import Parametros from './Parametros'
 
-function Endpoint({ endpoint }) {
+function Endpoint({ endpoint, metodoHTTP }) {
 
     const [endpointSeleccionado, setEndpointSeleccionado] = useState(false)
     const [modeloSeleccionado, setModeloSeleccionado] = useState(true)
@@ -65,7 +65,7 @@ function Endpoint({ endpoint }) {
                 
                     <div>
                         {
-                            endpoint.parametros ? ( <Parametros parametrosEndpoint={endpoint.parametros}/>) : (console.log())
+                            endpoint.parametros ? ( <Parametros parametrosEndpoint={endpoint.parametros} urlEndpoint={'http://localhost:4000/api/regiones' + endpoint.url} metodoHTTP={metodoHTTP}/>) : (console.log())
                         }
                     </div>
 
