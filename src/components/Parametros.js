@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import './styles/Parametros.css'
 
+import Cliente from './Cliente'
+
 function Parametros({parametrosEndpoint}) {
 
     const crearParametros = () => {
@@ -14,6 +16,7 @@ function Parametros({parametrosEndpoint}) {
     }
 
     const [parametros, setParametros] = useState(crearParametros())
+    const [llamadaEndpoint, setLlamadaEndpoint] = useState(false)
     
     let onInputChange = function(e) {
 
@@ -76,7 +79,18 @@ function Parametros({parametrosEndpoint}) {
                
                 </tbody>
             </table>
+       
             <button onClick={() => console.log(parametros)}>Ver parametros en consola</button>
+            <button className="btn btn-primary" onClick={() => setLlamadaEndpoint(true)}> Llamada al Endpoint </button>
+            
+            {
+                llamadaEndpoint ? ( 
+                    <div>
+                        <Cliente url={'http://localhost:4000/api/regiones'} />
+                    </div>
+                ) : (<div></div>)
+            }
+           
         </div>
     )
 }
