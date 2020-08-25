@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './styles/ModeloRespuesta.css'
 
 function ModeloRespuesta({ contenidoRespuesta, descripcion, atributosContenido, tipoContenidoRespuesta }) {
 
-    console.log(tipoContenidoRespuesta)
-    const [seleccionado, setSeleccionado] = useState(false)
+    // const [seleccionado, setSeleccionado] = useState(false)
 
-    const clickEnModelo = () => setSeleccionado(!seleccionado)
+    // const clickEnModelo = () => setSeleccionado(!seleccionado)
 
 
     return (
@@ -31,7 +29,7 @@ function ModeloRespuesta({ contenidoRespuesta, descripcion, atributosContenido, 
             </table>
             <p>Contenido Respuesta</p>
             {
-                contenidoRespuesta.indexOf('Array') != -1 ? <p>{'[{'}</p> :  <p>{'{'}</p>
+                contenidoRespuesta.indexOf('Array') !== -1 ? <p>{'[{'}</p> :  <p>{'{'}</p>
             }
 
             {
@@ -43,7 +41,7 @@ function ModeloRespuesta({ contenidoRespuesta, descripcion, atributosContenido, 
                 )
             }
             {
-                contenidoRespuesta.indexOf('Array') != -1 ? <p>{'}]'}</p> : <p>{'}'}</p>
+                contenidoRespuesta.indexOf('Array') !== -1 ? <p>{'}]'}</p> : <p>{'}'}</p>
             }
         </div>
     )

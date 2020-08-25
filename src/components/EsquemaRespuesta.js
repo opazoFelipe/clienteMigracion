@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React from 'react'
 import './styles/EsquemaRespuesta.css'
 
 function EsquemaRespuesta({ atributosContenido }) {
-
-    const [seleccionado, setSeleccionado] = useState(false)
-
-    const clickEnModelo = () => setSeleccionado(!seleccionado)
 
     return (
 

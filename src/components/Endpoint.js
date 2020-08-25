@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/Endpoint.css'
 
 import ModeloRespuesta from './ModeloRespuesta'
-import EsquemaRespuesta from './EsquemaRespuesta';
+import EsquemaRespuesta from './EsquemaRespuesta'
+import Parametros from './Parametros'
 
 function Endpoint({ endpoint }) {
 
@@ -12,6 +12,7 @@ function Endpoint({ endpoint }) {
     const [esquemaSeleccionado, setEsquemaSeleccionado] = useState(false)
 
     const clickEnEndpoint = () => setEndpointSeleccionado(!endpointSeleccionado)
+
     const cambiaSelect = (e) => {
         
         if(e.target.value === 'modeloSeleccionado') {
@@ -28,36 +29,51 @@ function Endpoint({ endpoint }) {
     return (
 
         <div>
-            <div className="pt-2 pb-2" onClick={clickEnEndpoint}>
+            <div className="pt-5 pb-2" onClick={clickEnEndpoint}>
                 <h2>{endpoint.url}</h2>
                 <h4>{endpoint.descripcion}</h4>
             </div>
 
-            <div style={endpointSeleccionado ? { display: 'block' } : { display: 'none' }}>
+            {
+                endpointSeleccionado ? (
 
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlSelect1">Example select</label>
-                    <select className="form-control" id="exampleFormControlSelect1" onChange={cambiaSelect}>
-                        <option value='modeloSeleccionado'>Modelo</option>
-                        <option value='esquemaSeleccionado'>Esquema</option>
-                    </select>
-                </div>
+                    <div style={endpointSeleccionado ? { display: 'block' } : { display: 'none' }}>
 
-                <div style={modeloSeleccionado ? {display: 'block'} : {display: 'none'}}>
-                    <ModeloRespuesta key={endpoint.claseRespuesta.descripcion}
-                        contenidoRespuesta = {endpoint.claseRespuesta.contenidoRespuesta}
-                        descripcion = {endpoint.claseRespuesta.descripcion}
-                        atributosContenido = {endpoint.claseRespuesta.atributosContenido}
-                        tipoContenidoRespuesta = {endpoint.tipoContenidoRespuesta}
-                    />
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlSelect1">Example select</label>
+                        <select className="form-control" id="exampleFormControlSelect1" onChange={cambiaSelect}>
+                            <option value='modeloSeleccionado'>Modelo</option>
+                            <option value='esquemaSeleccionado'>Esquema</option>
+                        </select>
+                    </div>
 
-                <div style={esquemaSeleccionado ? {display: 'block'} : {display: 'none'}}>
-                    <EsquemaRespuesta key={endpoint.claseRespuesta.descripcion}
-                        atributosContenido={endpoint.claseRespuesta.atributosContenido}
-                    />
-                </div>
+                    <div style={modeloSeleccionado ? {display: 'block'} : {display: 'none'}}>
+                        <ModeloRespuesta key={endpoint.claseRespuesta.descripcion}
+                            contenidoRespuesta = {endpoint.claseRespuesta.contenidoRespuesta}
+                            descripcion = {endpoint.claseRespuesta.descripcion}
+                            atributosContenido = {endpoint.claseRespuesta.atributosContenido}
+                            tipoContenidoRespuesta = {endpoint.tipoContenidoRespuesta}
+                        />
+                    </div>
+
+                    <div style={esquemaSeleccionado ? {display: 'block'} : {display: 'none'}}>
+                        <EsquemaRespuesta key={endpoint.claseRespuesta.descripcion}
+                            atributosContenido={endpoint.claseRespuesta.atributosContenido}
+                        />
+                    </div>
+ 
+                
+                    <div>
+                        {
+                            endpoint.parametros ? ( <Parametros parametrosEndpoint={endpoint.parametros}/>) : (console.log())
+                        }
+                    </div>
+
             </div>
+
+                ) : ( <div></div>) 
+            }
+            
         </div>
 
     )

@@ -1,12 +1,12 @@
 {
-    "titulo": "/regiones",
+    "titulo": "api/regiones",
     "descripcion": "Informacion del modulo Regiones",
     "api": [
         {
             "metodoHTTP": "GET",
             "endpoints": [
                 {
-                    "url": "/api/regiones/",
+                    "url": "/",
                     "descripcion": "Devuelve todas las regiones guardadas",
                     "tipoContenidoRespuesta": "application/json",
                     "claseRespuesta": {
@@ -35,11 +35,11 @@
                             }
                         ]
                     },
-                    "parametros": {},
+                    "parametros": [],
                     "cliente": null
                 }, 
                 {
-                    "url": "/api/regiones/provinciasPorRegion",
+                    "url": "/provinciasPorRegion",
                     "descripcion": "Devuelve todas las provincias de una Region",
                     "tipoContenidoRespuesta": "application/json",
                     "claseRespuesta": {
@@ -47,27 +47,72 @@
                         "descripcion": "Array de objetos provincia",
                         "atributosContenido": [
                             {
+                                "key": "prv_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la provincia"
+                            },
+                            {
+                                "key": "prv_descripcion",
+                                "tipo": "string",
+                                "descripcion": "nombre de la provincia"
+                            },
+                            {
                                 "key": "rgn_codigo",
                                 "tipo": "integer",
-                                "descripcion": "codigo de la region"
-                            },
-                            {
-                                "key": "rgn_descripcion",
-                                "tipo": "string",
-                                "descripcion": "nombre de la region"
-                            },
-                            {
-                                "key": "pis_codigo",
-                                "tipo": "integer",
-                                "descripcion": "?"
-                            },
-                            {
-                                "key": "rgn_mnemonico",
-                                "tipo": "string",
-                                "descripcion": "?"
+                                "descripcion": "codigo de la region a la que pertenecen las provincias encontradas"
                             }
                         ]
                     },
+                    "parametros": [
+                        {
+                            "nombre": "codRegion",
+                            "tipo": "integer",
+                            "descripcion": "El codigo de la region cuyas provincias son solicitadas",
+                            "valorInicialCliente": 1
+                        }
+                    ],
+                    "cliente": {
+                        "inputs": null
+                    }
+                },
+                {
+                    "url": "/comunasPorProvincia",
+                    "descripcion": "Devuelve todas las comunas de una Provincia",
+                    "tipoContenidoRespuesta": "application/json",
+                    "claseRespuesta": {
+                        "contenidoRespuesta": "Array[comuna]",
+                        "descripcion": "Array de objetos comuna",
+                        "atributosContenido": [
+                            {
+                                "key": "cmn_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la comuna"
+                            },
+                            {
+                                "key": "cmn_descripcion",
+                                "tipo": "string",
+                                "descripcion": "nombre de la comuna"
+                            },
+                            {
+                                "key": "prv_codigo",
+                                "tipo": "integer",
+                                "descripcion": "codigo de la provincia a la que pertenecen las comunas encontradas"
+                            },
+                            {
+                                "key": "cod_comuna_bci",
+                                "tipo": "integer",
+                                "descripcion": "???"
+                            }
+                        ]
+                    },
+                    "parametros": [
+                        {
+                            "nombre": "codProvincia",
+                            "tipo": "integer",
+                            "descripcion": "El codigo de la provincia cuyas comunas son solicitadas",
+                            "valorInicialCliente": 1
+                        }
+                    ],
                     "cliente": {
                         "inputs": null
                     }
